@@ -42,7 +42,8 @@ export CONFIGS="$NEW_CONFIGS"
 function set_repmgr_upstream_node {
     if [ "$REPMGR_MAJOR" == "3" ]; then
         echo "upstream_node=$REPLICATION_UPSTREAM_NODE_ID" >> $REPMGR_CONFIG_FILE
-    elif [ "$REPMGR_MAJOR" == "4" ]; then
-        export REPMGR_START_OPTIONS="$REPMGR_START_OPTIONS --upstream-node-id=$REPLICATION_UPSTREAM_NODE_ID"
+    # commented for pgslave to work with ENV REPMGR_START_OPTIONS: --daemonize=false for repmgr 4.1 and above
+    # elif [ "$REPMGR_MAJOR" == "4" ]; then
+    #     export REPMGR_START_OPTIONS="$REPMGR_START_OPTIONS --upstream-node-id=$REPLICATION_UPSTREAM_NODE_ID"
     fi
 }
